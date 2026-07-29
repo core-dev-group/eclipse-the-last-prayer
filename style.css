@@ -324,7 +324,9 @@ h1, h2, h3, h4, .logo {
 .char-img-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: bottom;
+    padding-top: 2rem;
 }
 
 .char-overlay {
