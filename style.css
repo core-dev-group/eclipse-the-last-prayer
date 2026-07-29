@@ -74,26 +74,32 @@ h1, h2, h3, h4, .logo {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
-    transition: all 0.4s ease;
-    padding: 1.5rem 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-}
-
-.navbar.scrolled {
-    padding: 1rem 0;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
 }
 
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.nav-logo:hover {
+    transform: scale(1.05);
 }
 
 .logo {
@@ -216,7 +222,51 @@ h1, h2, h3, h4, .logo {
     position: relative;
     z-index: 2;
     max-width: 900px;
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-logo {
+    max-width: 700px;
+    width: 90%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.2));
+    animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mature-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background: rgba(139, 0, 0, 0.2);
+    padding: 6px 16px;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(4px);
+}
+
+.age-rating {
+    background: #ff0000;
+    color: #fff;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.mature-text {
+    color: #ffcccc;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .game-title {
@@ -443,8 +493,26 @@ h1, h2, h3, h4, .logo {
 
 .footer-brand p {
     color: var(--text-muted);
+    line-height: 1.6;
     margin: 1rem 0 2rem;
     max-width: 400px;
+}
+
+.footer-logo {
+    max-width: 250px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+}
+
+.footer-mature {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed rgba(255, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    color: #ffcccc;
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
 .social-links {
