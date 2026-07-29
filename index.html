@@ -3,78 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Nameless King | Dark Fantasy RPG</title>
-    <meta name="description" content="Jelajahi dunia dark fantasy di The Nameless King. Tentukan takdirmu, ungkap misteri kerajaan yang hilang, dan rasakan pengalaman RPG yang imersif.">
+    <title>The Nameless King | Official Game Website</title>
+    <meta name="description" content="Selami dunia dark fantasy The Nameless King. Sebuah kisah tragis tentang darah, pengkhianatan, dan Besi Bintang.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">The Nameless King</div>
-        <ul class="nav-links">
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#features">Fitur</a></li>
-            <li><a href="https://discord.gg/GqJ4Y8MfZx" target="_blank" class="nav-btn">Komunitas</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="logo">The Nameless King</div>
+            <ul class="nav-links">
+                <li><a href="#story">Kisah</a></li>
+                <li><a href="#characters">Karakter</a></li>
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#media">Media</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="https://discord.gg/GqJ4Y8MfZx" target="_blank" class="btn btn-outline"><i class="fa-brands fa-discord"></i> Komunitas</a>
+                <a href="#download" class="btn btn-glow">Mainkan Gratis</a>
+            </div>
+        </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="hero" id="home">
+        <!-- Hero Background: Ganti URL dengan hasil AI-mu -->
+        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=1920&auto=format&fit=crop');"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Bangkitlah, Pengembara.</h1>
-            <p class="hero-subtitle">Tahta yang kosong menantimu di ujung kegelapan.</p>
-            <div class="cta-group">
-                <a href="#download" class="btn btn-primary">Mainkan Sekarang</a>
-                <a href="#about" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+        
+        <div class="hero-content reveal">
+            <h1 class="game-title">The Nameless King</h1>
+            <p class="game-tagline">"Kebenaran yang Terkubur Bersama Darah dan Besi."</p>
+            <div class="hero-buttons">
+                <a href="#story" class="btn btn-outline btn-large">Ungkap Misteri</a>
+                <a href="#trailer" class="btn btn-play"><i class="fa-solid fa-play"></i> Tonton Trailer</a>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll ke bawah</span>
+            <i class="fa-solid fa-chevron-down"></i>
         </div>
     </header>
 
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">Kebenaran yang Terkubur</h2>
-            <p class="section-text">
-                Selama ini kau menjalani kehidupan damai di desa terpencil bersama kakekmu, seorang pandai besi. Namun, di hari pemakamannya, seorang pria misterius bernama Valerius mengungkap kenyataan pahit: seluruh hidupmu adalah kebohongan. Kakekmu membuang identitas dan kehormatannya demi menyembunyikanmu dari mereka yang membantai keluargamu. Kini, dengan kalung Besi Bintang di dadamu, kau harus melangkah keluar dari bayang-bayang masa lalu untuk merebut kembali apa yang menjadi hakmu.
-            </p>
+    <!-- The Story Section -->
+    <section id="story" class="section dark-section">
+        <div class="container split-layout">
+            <div class="content-text reveal fade-left">
+                <h4 class="section-subtitle">SINOPSIS</h4>
+                <h2 class="section-title">Kebohongan yang Menyelamatkanmu</h2>
+                <p>Selama ini kau menjalani kehidupan damai di desa terpencil bersama kakekmu, seorang pandai besi tua. Tangan yang kau kenal selalu berbau besi dan arang, mengajarkanmu cara menempa logam.</p>
+                <p>Namun di hari pemakamannya, seorang pria bertubuh besar dengan wajah penuh luka, Valerius, muncul dari balik hujan. Ia mengungkap kenyataan pahit: <strong>kakekmu membuang identitas aslinya untuk menyembunyikanmu.</strong></p>
+                <p>Kini, dengan relik <em>Besi Bintang (Star Iron)</em> menggantung di dadamu—benda terkutuk yang menjadi alasan seluruh keluargamu dibantai—kau harus melangkah keluar dari bayang-bayang masa lalu.</p>
+            </div>
+            <div class="content-image reveal fade-right">
+                <!-- Ganti dengan aset gambar cerita -->
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop" alt="The Forge" class="story-img">
+            </div>
         </div>
     </section>
 
-    <section id="features" class="features-section">
+    <!-- Characters Section -->
+    <section id="characters" class="section characters-section">
         <div class="container">
-            <h2 class="section-title">Fitur Utama</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📖</div>
-                    <h3>Branching Narrative</h3>
-                    <p>Setiap pilihanmu memiliki bobot. Alur cerita bercabang yang akan membawamu ke berbagai kemungkinan akhir (Multiple Endings).</p>
+            <div class="text-center reveal fade-up">
+                <h4 class="section-subtitle">TOKOH UTAMA</h4>
+                <h2 class="section-title">Jiwa-jiwa yang Tersisa</h2>
+            </div>
+            
+            <div class="character-grid">
+                <!-- Character 1 -->
+                <div class="char-card reveal fade-up" style="transition-delay: 100ms;">
+                    <div class="char-img-box">
+                        <img src="https://images.unsplash.com/photo-1542458428-56f8f55c2763?q=80&w=400&auto=format&fit=crop" alt="Alexios">
+                        <div class="char-overlay"></div>
+                    </div>
+                    <div class="char-info">
+                        <h3>Alexios</h3>
+                        <span class="char-role">Sang Pewaris Besi Bintang</span>
+                        <p>Pemuda yang kehilangan arah setelah mengetahui seluruh masa lalunya adalah kebohongan. Kini memikul beban berat di lehernya.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Discord RPC</h3>
-                    <p>Terintegrasi penuh dengan profil Discord. Tunjukkan pada dunia di chapter mana kamu sedang berjuang secara real-time.</p>
+
+                <!-- Character 2 -->
+                <div class="char-card reveal fade-up" style="transition-delay: 200ms;">
+                    <div class="char-img-box">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400&auto=format&fit=crop" alt="Evanthe">
+                        <div class="char-overlay"></div>
+                    </div>
+                    <div class="char-info">
+                        <h3>Evanthe</h3>
+                        <span class="char-role">Gadis Berpayung Usang</span>
+                        <p>Tetangga desa yang selalu menemaninya di bawah rintik hujan. Setia, namun menyimpan ketakutan mendalam terhadap dunia luar.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Core Dev System</h3>
-                    <p>Ekosistem RPG lintas platform. Progres level dan reputasimu di dalam game terhubung langsung dengan server Discord komunitas.</p>
+
+                <!-- Character 3 -->
+                <div class="char-card reveal fade-up" style="transition-delay: 300ms;">
+                    <div class="char-img-box">
+                        <img src="https://images.unsplash.com/photo-1614583225154-5fc20b64d9c1?q=80&w=400&auto=format&fit=crop" alt="Valerius">
+                        <div class="char-overlay"></div>
+                    </div>
+                    <div class="char-info">
+                        <h3>Valerius</h3>
+                        <span class="char-role">Prajurit Buangan</span>
+                        <p>Pria asing bertubuh besar dengan sayatan di wajahnya. Membawa kebenaran yang pahit dan menjadi penuntun di dunia yang kejam.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Key Features Section -->
+    <section id="features" class="section dark-section">
+        <div class="container text-center reveal fade-up">
+            <h4 class="section-subtitle">FITUR PERMAINAN</h4>
+            <h2 class="section-title">Tempa Takdirmu Sendiri</h2>
+        </div>
+        
+        <div class="container features-showcase">
+            <div class="feature-item reveal fade-left">
+                <div class="feature-icon"><i class="fa-solid fa-book-skull"></i></div>
+                <div class="feature-text">
+                    <h3>A Tale of Blood & Iron</h3>
+                    <p>Rasakan narasi <em>Dark Fantasy</em> yang mendalam dan kelam. Setiap dialog dirancang dengan hati-hati untuk mengungkap tabir sejarah kerajaan yang runtuh.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item reveal fade-up">
+                <div class="feature-icon"><i class="fa-solid fa-code-branch"></i></div>
+                <div class="feature-text">
+                    <h3>Consequential Choices</h3>
+                    <p>Pilihanmu tidak hanya mengubah dialog, namun menentukan siapa yang bertahan hidup dan siapa yang binasa. Nikmati berbagai kemungkinan akhir <em>(Multiple Endings)</em>.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item reveal fade-right">
+                <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
+                <div class="feature-text">
+                    <h3>Orchestral Soundscape</h3>
+                    <p>Suasana desa yang hujan dan medan perang yang mencekam diiringi oleh musik <em>BGM</em> orkestra eksklusif yang menyayat hati.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media / Gallery Section -->
+    <section id="media" class="section media-section">
+        <div class="container text-center reveal fade-up">
+            <h4 class="section-subtitle">GALERI</h4>
+            <h2 class="section-title">Tangkapan Layar</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1579965342575-16428a7c8881?q=80&w=600&auto=format&fit=crop" alt="Screenshot 1"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop" alt="Screenshot 2"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1582298538104-e0b04c89d2d0?q=80&w=600&auto=format&fit=crop" alt="Screenshot 3"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1549488344-c01bbd571fc0?q=80&w=600&auto=format&fit=crop" alt="Screenshot 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
+        <div class="container footer-grid">
             <div class="footer-brand">
-                <h3>The Nameless King</h3>
-                <p>Developed by Core Dev Group</p>
+                <h2 class="logo">The Nameless King</h2>
+                <p>Sebuah game Visual Novel epik yang dikembangkan oleh Core Dev Group. Bersiaplah menghadapi kegelapan.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="https://discord.gg/GqJ4Y8MfZx" target="_blank">Bergabung ke Discord</a>
-                <a href="#about">Tentang Game</a>
+            
+            <div class="footer-links-col">
+                <h3>Permainan</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#story">Sinopsis Cerita</a></li>
+                    <li><a href="#characters">Karakter</a></li>
+                    <li><a href="#media">Media & Pers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links-col">
+                <h3>Komunitas</h3>
+                <ul>
+                    <li><a href="https://discord.gg/GqJ4Y8MfZx" target="_blank">Bergabung ke Discord</a></li>
+                    <li><a href="#">Dukung di Patreon</a></li>
+                    <li><a href="#">Lapor Bug</a></li>
+                </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>&copy; 2026 Core Dev Group. All rights reserved.</p>
+            <div class="container flex-between">
+                <p>&copy; 2026 Core Dev Group. Hak Cipta Dilindungi.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
