@@ -348,27 +348,35 @@ h1, h2, h3, h4, .logo {
 
 .character-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
 }
 
 .char-card {
     background: var(--bg-card);
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease;
+    position: relative;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .char-card:hover {
     transform: translateY(-10px);
-    border-color: var(--gold-dim);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
 }
 
 .char-img-box {
-    position: relative;
-    height: 400px;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    background: radial-gradient(circle at top, #2a2a2a 0%, #050505 80%);
 }
 
 .char-img-box img {
@@ -376,43 +384,62 @@ h1, h2, h3, h4, .logo {
     height: 100%;
     object-fit: contain;
     object-position: bottom;
-    padding-top: 2rem;
+    transition: transform 0.5s ease;
+}
+
+.char-card:hover .char-img-box img {
+    transform: scale(1.05);
 }
 
 .char-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to top, var(--bg-card), transparent);
+    bottom: 0; left: 0; width: 100%; height: 70%;
+    background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.8) 40%, transparent 100%);
+    z-index: 2;
 }
 
 .char-info {
-    padding: 2rem;
-    text-align: center;
     position: relative;
-    top: -20px;
+    z-index: 3;
+    padding: 1.5rem;
+    text-align: center;
 }
 
 .char-info h3 {
-    font-size: 1.8rem;
     color: var(--gold);
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
 }
 
 .char-role {
     display: block;
-    font-size: 0.9rem;
     color: var(--neon-green);
-    margin-bottom: 1rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
 }
 
 .char-info p {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: none; /* Disembunyikan agar kartu terlihat lebih fokus ke seni/visual */
+}
+
+.char-card:hover .char-info p {
+    display: block; /* Opsi jika ingin menampilkan saat hover, tapi tombol sudah cukup */
+}
+
+.btn-lore {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 8px;
+    opacity: 0.8;
+}
+.char-card:hover .btn-lore {
+    opacity: 1;
 }
 
 /* Features Showcase */
