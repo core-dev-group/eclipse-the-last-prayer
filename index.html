@@ -83,6 +83,7 @@
                         <h3>Alexios</h3>
                         <span class="char-role">Sang Pewaris Besi Bintang</span>
                         <p>Pemuda yang kehilangan arah setelah mengetahui seluruh masa lalunya adalah kebohongan. Kini memikul beban berat di lehernya.</p>
+                        <button class="btn btn-outline btn-lore" data-modal="modal-alexios">Baca Lore</button>
                     </div>
                 </div>
 
@@ -95,7 +96,8 @@
                     <div class="char-info">
                         <h3>Evanthe</h3>
                         <span class="char-role">Gadis Berpayung Usang</span>
-                        <p>Tetangga desa yang selalu menemaninya di bawah rintik hujan. Setia, namun menyimpan ketakutan mendalam terhadap dunia luar.</p>
+                        <p>Tetangga desa yang selalu menemaninya di bawah rintik hujan. Kelembutannya adalah kelemahan di dunia yang kejam.</p>
+                        <button class="btn btn-outline btn-lore" data-modal="modal-evanthe">Baca Lore</button>
                     </div>
                 </div>
 
@@ -107,8 +109,23 @@
                     </div>
                     <div class="char-info">
                         <h3>Valerius</h3>
-                        <span class="char-role">Prajurit Buangan</span>
-                        <p>Pria asing bertubuh besar dengan sayatan di wajahnya. Membawa kebenaran yang pahit dan menjadi penuntun di dunia yang kejam.</p>
+                        <span class="char-role">Serigala Abu-Abu</span>
+                        <p>Prajurit bayaran berwajah codet yang menyimpan kebenaran pahit. Mentor brutal yang mengajarkan seni membunuh.</p>
+                        <button class="btn btn-outline btn-lore" data-modal="modal-valerius">Baca Lore</button>
+                    </div>
+                </div>
+
+                <!-- Character 4 -->
+                <div class="char-card reveal fade-up" style="transition-delay: 400ms;">
+                    <div class="char-img-box">
+                        <img src="assets/img/char-kakek.png" alt="Sang Kakek">
+                        <div class="char-overlay"></div>
+                    </div>
+                    <div class="char-info">
+                        <h3>Sang Kakek</h3>
+                        <span class="char-role">Pandai Besi Misterius</span>
+                        <p>Pria tua yang membesarkan Alexios. Tangan kasarnya menyimpan rahasia besar di balik kehangatannya.</p>
+                        <button class="btn btn-outline btn-lore" data-modal="modal-kakek">Baca Lore</button>
                     </div>
                 </div>
             </div>
@@ -202,6 +219,59 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modals untuk Lore Karakter -->
+    <div id="modal-alexios" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Alexios</h2>
+            <h4 class="modal-subtitle">Sang Pewaris Besi Bintang</h4>
+            <div class="modal-body">
+                <p>Pemuda yang mengira dirinya hanyalah cucu seorang pandai besi biasa. Tumbuh besar dengan menempa logam, hidupnya hancur dalam semalam ketika desanya dibakar rata oleh pasukan berzirah hitam tak bernama.</p>
+                <p>Kini, dengan kalung <strong>Besi Bintang (Star Iron)</strong> yang berdenyut panas merespons kemurnian darahnya—benda terkutuk yang menjadi alasan seluruh keluarganya dibantai—ia dihadapkan pada persimpangan jalan.</p>
+                <p>Apakah ia akan menggali puing-puing mencari kebenaran di ruang bawah tanah rahasia kakeknya? Ataukah ia akan meraih tangan Valerius, memeluk amarah murni, dan belajar memotong leher musuhnya di tengah badai?</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-evanthe" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Evanthe</h2>
+            <h4 class="modal-subtitle">Gadis Berpayung Usang</h4>
+            <div class="modal-body">
+                <p>Gadis murni dari desa yang selalu menemani Alexios di bawah rintik hujan. Ia adalah sisa-sisa terakhir dari kemanusiaan dan kehidupan damai Alexios.</p>
+                <p>Ketika pembantaian terjadi, ia selamat karena berlindung di tengah kekacauan, namun matanya dipaksa merekam kengerian yang membuat suaranya nyaris hilang.</p>
+                <p>Kelembutannya adalah kelemahan mematikan di dunia luar yang kejam. Dalam rute "Jalan Darah", keberadaannya dianggap sebagai beban oleh Valerius, sehingga ia harus ditinggalkan di sebuah Gereja Tua di perbatasan Hutan Kabut—demi keselamatannya sendiri.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-valerius" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Valerius</h2>
+            <h4 class="modal-subtitle">Serigala Abu-Abu</h4>
+            <div class="modal-body">
+                <p>Prajurit bayaran berwajah codet yang muncul di hari pemakaman kakek Alexios. Ia adalah pembawa kebenaran pahit bahwa seluruh hidup Alexios adalah kebohongan demi melindunginya.</p>
+                <p>Valerius bukanlah pria ramah; metodenya brutal dan tanpa ampun. Baginya, tangisan tidak akan memotong leher musuh. Jika Alexios memilih jalan balas dendam, Valerius bertindak sebagai mentor penyiksa yang keras.</p>
+                <p>Di tebing badai yang berlumpur, ia menendang dan menghajar Alexios tanpa belas kasihan, memaksanya menelan sisi kemanusiaannya agar siap bertahan hidup melawan musuh tanpa wajah.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-kakek" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Sang Kakek</h2>
+            <h4 class="modal-subtitle">Pandai Besi Misterius</h4>
+            <div class="modal-body">
+                <p>Pria tua yang membesarkan Alexios. Tangan kasarnya yang selalu berbau besi dan arang tidak pernah menempa cangkul atau pedang untuk petani biasa.</p>
+                <p>Belasan tahun lalu, ia adalah prajurit elit berpangkat tinggi. Ia dengan sengaja membuang nama aslinya, pangkatnya, dan seluruh kehormatannya hanya untuk satu tujuan: menyembunyikan pewaris terakhir darah murni (Alexios) dari kejaran pembunuh.</p>
+                <p>Ia akhirnya gugur perlahan-lahan oleh racun luka lama. Pesan terakhirnya bagi Alexios adalah untuk tetap kuat berdiri layaknya landasan tempaan besi yang tak tertembus, walau dunia terus memukulnya.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
