@@ -396,12 +396,12 @@ h1, h2, h3, h4, .logo {
 
 /* Fix for Pak Arman being too small due to image padding */
 .char-img-box img[alt="Pak Arman"] {
-    transform: scale(1.8);
+    transform: scale(1.3);
     transform-origin: bottom center;
 }
 
 .char-card:hover .char-img-box img[alt="Pak Arman"] {
-    transform: scale(1.9);
+    transform: scale(1.35);
 }
 
 .char-overlay {
