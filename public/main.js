@@ -53,3 +53,25 @@ window.addEventListener('click', (e) => {
         e.target.classList.remove('show');
     }
 });
+
+// Logika FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+        // Toggle the active class
+        const isActive = item.classList.contains('active');
+        
+        // Optional: Close all other open FAQs
+        faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        if (!isActive) {
+            item.classList.add('active');
+            const answer = item.querySelector('.faq-answer');
+            answer.style.maxHeight = answer.scrollHeight + 30 + "px"; // 30px for padding
+        }
+    });
+});
