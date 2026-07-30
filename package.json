@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kodel-dev/web-the-nameless-king#readme",
   "dependencies": {
-    "ejs": "^6.0.1"
+    "ejs": "^6.0.1",
+    "mongodb": "^7.5.0"
   }
 }

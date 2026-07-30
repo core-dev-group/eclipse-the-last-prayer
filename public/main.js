@@ -151,3 +151,56 @@ if (audio && playBtn) {
     `;
     document.head.appendChild(style);
 }
+
+// Logika Fetch Real-Time Patch Notes
+const patchNotesContainer = document.getElementById('patchNotesContainer');
+if (patchNotesContainer) {
+    fetch('/api/patchnotes')
+        .then(res => res.json())
+        .then(json => {
+            const loading = document.getElementById('loadingPatchNotes');
+            if (loading) loading.remove();
+            
+            // Hapus log-cursor dulu
+            const cursor = patchNotesContainer.querySelector('.log-cursor');
+            if (cursor) cursor.remove();
+
+            if (json.success && json.data && json.data.length > 0) {
+                json.data.forEach(note => {
+                    const entry = document.createElement('div');
+                    entry.className = 'log-entry';
+                    
+                    let changesHTML = '';
+                    if (note.changes && Array.isArray(note.changes)) {
+                        note.changes.forEach(change => {
+                            changesHTML += `<p class="log-text">> ${change}</p>`;
+                        });
+                    }
+
+                    entry.innerHTML = `
+                        <span class="log-date">${note.date}</span> <span class="log-version">${note.version}</span>
+                        ${changesHTML}
+                    `;
+                    patchNotesContainer.appendChild(entry);
+                });
+            } else {
+                const empty = document.createElement('div');
+                empty.className = 'log-entry';
+                empty.innerHTML = `<span class="log-text" style="color:#8b949e;">Tidak ada pembaruan saat ini.</span>`;
+                patchNotesContainer.appendChild(empty);
+            }
+
+            // Kembalikan cursor di paling bawah
+            const newCursor = document.createElement('div');
+            newCursor.className = 'log-cursor';
+            newCursor.innerText = '_';
+            patchNotesContainer.appendChild(newCursor);
+        })
+        .catch(err => {
+            console.error('Gagal mengambil patch notes:', err);
+            const loading = document.getElementById('loadingPatchNotes');
+            if (loading) {
+                loading.innerHTML = `<span class="log-text" style="color: #ff4444;">Gagal terhubung ke satelit. Menggunakan data cadangan (Offline).</span>`;
+            }
+        });
+}
