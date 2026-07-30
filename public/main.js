@@ -75,3 +75,79 @@ faqItems.forEach(item => {
         }
     });
 });
+
+// Logika Audio Player
+const audio = document.getElementById('bgmPlayer');
+const playBtn = document.getElementById('playBtn');
+const audioTime = document.getElementById('audioTime');
+const audioError = document.getElementById('audioError');
+const visualizerBars = document.querySelectorAll('.audio-visualizer .bar');
+let isPlaying = false;
+
+if (audio && playBtn) {
+    // Format waktu (detik ke menit:detik)
+    function formatTime(seconds) {
+        const min = Math.floor(seconds / 60);
+        const sec = Math.floor(seconds % 60);
+        return `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
+    }
+
+    // Update durasi saat audio diload
+    audio.addEventListener('loadedmetadata', () => {
+        audioTime.innerText = `00:00 / ${formatTime(audio.duration)}`;
+    });
+
+    // Update waktu berjalan
+    audio.addEventListener('timeupdate', () => {
+        if (!isNaN(audio.duration)) {
+            audioTime.innerText = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        }
+    });
+
+    // Tangani error (file tidak ditemukan)
+    audio.addEventListener('error', () => {
+        audioError.style.display = 'block';
+        playBtn.disabled = true;
+        playBtn.style.opacity = '0.5';
+    });
+
+    // Animasi visualizer
+    function toggleVisualizer(play) {
+        visualizerBars.forEach(bar => {
+            if (play) {
+                bar.style.animation = `bounce ${0.5 + Math.random()}s infinite alternate`;
+            } else {
+                bar.style.animation = 'none';
+                bar.style.height = '10px';
+            }
+        });
+    }
+
+    // Play / Pause
+    playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            audio.pause();
+            playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            toggleVisualizer(false);
+        } else {
+            // Coba play, tangkap error jika file tidak ada
+            audio.play().then(() => {
+                playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                toggleVisualizer(true);
+            }).catch(e => {
+                audioError.style.display = 'block';
+            });
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // CSS Keyframes untuk animasi bounce visualizer (ditambahkan via JS)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes bounce {
+            0% { height: 10px; }
+            100% { height: 30px; }
+        }
+    `;
+    document.head.appendChild(style);
+}

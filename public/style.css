@@ -718,6 +718,256 @@ h1, h2, h3, h4, .logo {
     margin-bottom: 1.2rem;
 }
 
+/* System Requirements */
+.sysreq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.sysreq-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sysreq-card.recommended {
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.sysreq-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.sysreq-header i {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+}
+
+.sysreq-card.recommended .sysreq-header i {
+    color: var(--gold);
+}
+
+.sysreq-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.sysreq-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.sysreq-list li {
+    margin-bottom: 0.8rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.sysreq-list li span {
+    font-weight: bold;
+    color: var(--text-main);
+    display: inline-block;
+    width: 80px;
+}
+
+.sysreq-footer {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* Audio Player */
+.audio-player-container {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.audio-visualizer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 30px;
+}
+
+.audio-visualizer .bar {
+    width: 4px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: height 0.1s ease;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.audio-info {
+    text-align: left;
+}
+
+.audio-info h4 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.audio-info span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Patch Notes Terminal */
+.terminal-container {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    background: #0d1117;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+    background: #161b22;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.terminal-title {
+    margin-left: 1rem;
+    color: #8b949e;
+    font-size: 0.85rem;
+}
+
+.terminal-body {
+    padding: 1.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.log-entry {
+    margin-bottom: 1.5rem;
+}
+
+.log-date {
+    color: #58a6ff;
+}
+
+.log-version {
+    color: #3fb950;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+.log-text {
+    color: #c9d1d9;
+    margin: 0.4rem 0 0 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.log-cursor {
+    color: #c9d1d9;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* About Developer */
+.about-container {
+    max-width: 600px;
+    margin: 3rem auto 0;
+}
+
+.about-logo {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.about-name {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+}
+
+.about-desc {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.about-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: var(--gold);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+}
+
 /* Roadmap Timeline */
 .roadmap-timeline {
     position: relative;
