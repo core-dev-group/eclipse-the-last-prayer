@@ -758,6 +758,8 @@ h1, h2, h3, h4, .logo {
     .char-info h3 { font-size: 1.3rem; margin-bottom: 0.2rem; }
     .char-info p { font-size: 0.75rem; margin-bottom: 0.8rem; }
     .btn-lore { font-size: 0.7rem; padding: 0.5rem 1rem; }
+    .char-img-box img[alt="Pak Arman"] { transform: scale(1.1); transform-origin: center center; }
+    .char-card:hover .char-img-box img[alt="Pak Arman"] { transform: scale(1.15); }
     
     /* Other Grids */
     .gallery-grid { grid-template-columns: 1fr; }
