@@ -722,10 +722,9 @@ h1, h2, h3, h4, .logo {
 
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .nav-actions { display: flex; gap: 0.5rem; }
-    .nav-actions .btn-outline { display: none; } /* Hide Komunitas, only show Gabung Beta */
-    .nav-actions .btn { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
-    .nav-logo { height: 45px; }
+    .nav-actions { display: flex; gap: 0.3rem; }
+    .nav-actions .btn { font-size: 0.65rem; padding: 0.4rem 0.6rem; }
+    .nav-logo { height: 40px; }
     
     /* Hero */
     .hero { min-height: 100vh; padding-top: 100px; }
@@ -755,4 +754,10 @@ h1, h2, h3, h4, .logo {
     /* Modals */
     .modal-content { padding: 2rem; width: 95%; }
     .modal-title { font-size: 1.8rem; }
+    
+    /* Footer */
+    .footer-links-col h3 { font-size: 1rem; margin-bottom: 0.8rem; }
+    .footer-links-col ul li { margin-bottom: 0.5rem; }
+    .footer-links-col ul li a { font-size: 0.85rem; }
+    .footer-bottom { font-size: 0.75rem; padding-top: 1rem; }
 }
