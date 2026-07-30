@@ -721,7 +721,10 @@ h1, h2, h3, h4, .logo {
 }
 
 @media (max-width: 768px) {
-    .nav-links, .nav-actions { display: none; }
+    .nav-links { display: none; }
+    .nav-actions { display: flex; gap: 0.5rem; }
+    .nav-actions .btn-outline { display: none; } /* Hide Komunitas, only show Gabung Beta */
+    .nav-actions .btn { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
     .nav-logo { height: 45px; }
     
     /* Hero */
@@ -739,7 +742,11 @@ h1, h2, h3, h4, .logo {
     
     /* Cards */
     .character-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .char-card { height: 400px; min-height: 400px; }
+    .char-card { height: 500px; min-height: 500px; }
+    .char-overlay { height: 50%; }
+    .char-info { padding: 1.5rem; }
+    .char-info h3 { font-size: 1.5rem; margin-bottom: 0.2rem; }
+    .char-info p { font-size: 0.8rem; margin-bottom: 1rem; }
     
     /* Grids */
     .gallery-grid { grid-template-columns: 1fr; }
