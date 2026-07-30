@@ -196,6 +196,7 @@ h1, h2, h3, h4, .logo {
     text-align: center;
     position: relative;
     overflow: hidden;
+    padding-top: 80px;
 }
 
 .hero-bg {
@@ -207,6 +208,7 @@ h1, h2, h3, h4, .logo {
     background-size: cover;
     background-position: center;
     transform: scale(1.05); /* For slow zoom effect later */
+    background-image: url('/assets/img/hero-bg.jpg');
 }
 
 .hero-overlay {
@@ -360,7 +362,8 @@ h1, h2, h3, h4, .logo {
     overflow: hidden;
     transition: all 0.4s ease;
     position: relative;
-    height: 480px;
+    height: 500px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
