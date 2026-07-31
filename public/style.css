@@ -247,6 +247,9 @@ h1, h2, h3, h4, .logo {
     position: relative;
     z-index: 2;
     max-width: 900px;
+    width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
