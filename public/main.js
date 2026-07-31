@@ -59,7 +59,6 @@ const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     question.addEventListener('click', () => {
-        // Toggle the active class
         const isActive = item.classList.contains('active');
         
         // Optional: Close all other open FAQs
@@ -72,6 +71,9 @@ faqItems.forEach(item => {
             item.classList.add('active');
             const answer = item.querySelector('.faq-answer');
             answer.style.maxHeight = answer.scrollHeight + 30 + "px"; // 30px for padding
+        } else {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').style.maxHeight = null;
         }
     });
 });
@@ -314,22 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. FAQ Accordion
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const item = question.parentElement;
-            
-            // Close others (optional, for accordion effect)
-            document.querySelectorAll('.faq-item').forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-            
-            item.classList.toggle('active');
-        });
-    });
+
 
     // 3. Pre-Register Form
     const preRegForm = document.getElementById('preRegisterForm');

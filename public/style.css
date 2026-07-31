@@ -1392,6 +1392,9 @@ h1, h2, h3, h4, .logo {
     .lore-text { font-size: 1rem; }
     .preregister-form { flex-direction: column; }
     .preregister-input { width: 100%; margin-bottom: 10px; }
+    .faq-question { padding: 1rem; }
+    .faq-question h3 { font-size: 0.95rem; }
+    .faq-item.active .faq-answer { padding: 0 1rem 1rem; }
     
     /* Footer */
     .footer-links-col h3 { font-size: 1rem; margin-bottom: 0.8rem; }
