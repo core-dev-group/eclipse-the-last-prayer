@@ -403,8 +403,6 @@
     overflow: hidden;
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
     position: relative;
-}
-
     height: 450px; /* Fixed height so the box doesn't shrink/expand */
     overflow-y: auto;
     position: relative;
@@ -850,6 +848,8 @@
     .modal-title { font-size: 1.5rem; }
     .modal-subtitle { font-size: 0.85rem; margin-bottom: 1rem; }
     .modal-body p { font-size: 0.95rem; line-height: 1.6; }
+    
+    .terminal-container { height: 350px; margin-top: 1.5rem; }
     
     .lightbox-close { top: 1rem; right: 1rem; font-size: 2rem; }
     .lore-section { padding: 3rem 0; }
