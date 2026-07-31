@@ -910,7 +910,7 @@ h1, h2, h3, h4, .logo {
 
 .terminal-body {
     padding: 2rem;
-    max-height: 450px;
+    height: 450px; /* Fixed height so the box doesn't shrink/expand */
     overflow-y: auto;
     position: relative;
     z-index: 3;
