@@ -171,38 +171,79 @@ if (patchNotesContainer) {
                 // Balikkan urutan agar yang terbaru diprint terakhir di bawah
                 const logs = [...json.data].reverse();
                 
-                for (const note of logs) {
-                    const entry = document.createElement('div');
-                    entry.className = 'log-entry';
-                    entry.style.display = 'none'; // Sembunyikan awal
-                    
-                    let changesHTML = '';
-                    if (note.changes && Array.isArray(note.changes)) {
-                        note.changes.forEach(change => {
-                            changesHTML += `<p class="log-text">> ${change}</p>`;
-                        });
+                // Fungsi untuk mengetik karakter satu per satu (efek Hacker lambat)
+                async function typeText(element, text, speed) {
+                    for (let i = 0; i < text.length; i++) {
+                        element.textContent += text.charAt(i);
+                        if (terminalBody) {
+                            terminalBody.scrollTo({
+                                top: terminalBody.scrollHeight,
+                                behavior: 'auto' // Jangan smooth agar tidak patah-patah saat ngetik cepat
+                            });
+                        }
+                        await new Promise(r => setTimeout(r, speed));
                     }
-
-                    entry.innerHTML = `
-                        <span class="log-date">[${note.date}]</span> <span class="log-version">${note.version}</span>
-                        ${changesHTML}
-                    `;
-                    patchNotesContainer.appendChild(entry);
-                    
-                    // Efek terminal lambat
-                    await new Promise(r => setTimeout(r, 100)); 
-                    entry.style.display = 'block';
-                    
-                    // Animasi auto-scroll ke bawah saat teks muncul
-                    if (terminalBody) {
-                        terminalBody.scrollTo({
-                            top: terminalBody.scrollHeight,
-                            behavior: 'smooth'
-                        });
-                    }
-                    
-                    await new Promise(r => setTimeout(r, 450)); // jeda sebelum patch note berikutnya
                 }
+
+                // Fungsi Looping Tanpa Henti
+                async function runInfiniteLoop() {
+                    while (true) {
+                        // Bersihkan layar setiap kali ulang dari awal
+                        patchNotesContainer.innerHTML = ''; 
+                        
+                        for (const note of logs) {
+                            const entry = document.createElement('div');
+                            entry.className = 'log-entry';
+                            patchNotesContainer.appendChild(entry);
+                            
+                            // Kontainer Judul
+                            const titleEl = document.createElement('div');
+                            entry.appendChild(titleEl);
+                            
+                            // Ngetik Tanggal
+                            const dateSpan = document.createElement('span');
+                            dateSpan.className = 'log-date';
+                            titleEl.appendChild(dateSpan);
+                            await typeText(dateSpan, `[${note.date}] `, 20); // Kecepatan ngetik
+                            
+                            // Ngetik Versi
+                            const versionSpan = document.createElement('span');
+                            versionSpan.className = 'log-version';
+                            titleEl.appendChild(versionSpan);
+                            await typeText(versionSpan, note.version, 20);
+                            
+                            // Ngetik Perubahan (Baris demi baris)
+                            if (note.changes && Array.isArray(note.changes)) {
+                                for (const change of note.changes) {
+                                    const p = document.createElement('p');
+                                    p.className = 'log-text';
+                                    entry.appendChild(p);
+                                    await typeText(p, `> ${change}`, 15); // Ngetik isi log lebih cepat sedikit
+                                }
+                            }
+                            
+                            // Jeda sejenak sebelum ngetik update berikutnya
+                            await new Promise(r => setTimeout(r, 600)); 
+                        }
+                        
+                        // Setelah SEMUA teks selesai diketik, munculkan kursor Hacker berkedip
+                        const cursor = document.createElement('div');
+                        cursor.className = 'log-cursor';
+                        cursor.innerText = '█';
+                        patchNotesContainer.appendChild(cursor);
+                        
+                        if (terminalBody) {
+                            terminalBody.scrollTo({ top: terminalBody.scrollHeight, behavior: 'smooth' });
+                        }
+                        
+                        // Tunggu 6 Detik untuk dibaca, lalu bersihkan layar dan ulang dari awal!
+                        await new Promise(r => setTimeout(r, 6000));
+                    }
+                }
+                
+                // Mulai animasinya
+                runInfiniteLoop();
+
             } else {
                 const empty = document.createElement('div');
                 empty.className = 'log-entry';
