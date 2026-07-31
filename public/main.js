@@ -177,10 +177,11 @@ if (patchNotesContainer) {
                 async function typeText(element, text, speed) {
                     for (let i = 0; i < text.length; i++) {
                         element.textContent += text.charAt(i);
-                        if (terminalBody) {
-                            terminalBody.scrollTo({
-                                top: terminalBody.scrollHeight,
-                                behavior: 'auto' // Jangan smooth agar tidak patah-patah saat ngetik cepat
+                        const terminalContainer = document.querySelector('.terminal-container');
+                        if (terminalContainer) {
+                            terminalContainer.scrollTo({
+                                top: terminalContainer.scrollHeight,
+                                behavior: 'auto'
                             });
                         }
                         await new Promise(r => setTimeout(r, speed));
@@ -234,8 +235,9 @@ if (patchNotesContainer) {
                         cursor.innerText = '█';
                         patchNotesContainer.appendChild(cursor);
                         
-                        if (terminalBody) {
-                            terminalBody.scrollTo({ top: terminalBody.scrollHeight, behavior: 'smooth' });
+                        const terminalContainerEnd = document.querySelector('.terminal-container');
+                        if (terminalContainerEnd) {
+                            terminalContainerEnd.scrollTo({ top: terminalContainerEnd.scrollHeight, behavior: 'smooth' });
                         }
                         
                         // Tunggu 6 Detik untuk dibaca, lalu bersihkan layar dan ulang dari awal!

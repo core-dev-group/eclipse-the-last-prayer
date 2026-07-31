@@ -849,7 +849,7 @@
     .modal-subtitle { font-size: 0.85rem; margin-bottom: 1rem; }
     .modal-body p { font-size: 0.95rem; line-height: 1.6; }
     
-    .terminal-container { height: auto; max-height: none; overflow-y: visible; margin-top: 1.5rem; }
+    .terminal-container { height: 350px; overflow-y: hidden; margin-top: 1.5rem; }
     
     .lightbox-close { top: 1rem; right: 1rem; font-size: 2rem; }
     .lore-section { padding: 3rem 0; }
