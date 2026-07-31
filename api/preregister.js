@@ -51,15 +51,33 @@ module.exports = async (req, res) => {
         const db = client.db('namelessking');
         const collection = db.collection('preregister');
 
+        // Ambil IP Address pengirim (Di Vercel, biasanya ada di header x-forwarded-for)
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+
+        // Cek Anti-Spam: Berapa kali IP ini mendaftar dalam 24 jam terakhir?
+        const oneDayAgo = new Date();
+        oneDayAgo.setHours(oneDayAgo.getHours() - 24);
+        
+        const recentRegistrations = await collection.countDocuments({ 
+            ip: ip,
+            date: { $gte: oneDayAgo.toISOString() }
+        });
+        
+        // Batas maksimal 3 kali daftar per IP dalam sehari
+        if (recentRegistrations >= 3 && ip !== 'unknown') {
+            return res.status(429).json({ success: false, error: 'Batas pendaftaran harian tercapai. Coba lagi besok.' });
+        }
+
         // Cek apakah email sudah terdaftar
         const existingEmail = await collection.findOne({ email });
         if (existingEmail) {
             return res.status(400).json({ success: false, error: 'Email ini sudah terdaftar sebelumnya!' });
         }
 
-        // Simpan email baru
+        // Simpan email baru beserta IP-nya
         await collection.insertOne({
             email,
+            ip,
             date: new Date().toISOString(),
             status: 'waiting'
         });
