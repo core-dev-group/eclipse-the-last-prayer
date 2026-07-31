@@ -273,3 +273,101 @@ if (patchNotesContainer) {
             }
         });
 }
+
+// ==========================================
+// NEW FEATURES: LIGHTBOX, FAQ, PRE-REGISTER
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Lightbox Gallery
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    
+    if (galleryImages.length > 0) {
+        // Create lightbox elements
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <span class="lightbox-close"><i class="fa-solid fa-xmark"></i></span>
+            <img src="" alt="Lightbox Image">
+        `;
+        document.body.appendChild(lightbox);
+        
+        const lightboxImg = lightbox.querySelector('img');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        
+        galleryImages.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+        
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
+
+    // 2. FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            
+            // Close others (optional, for accordion effect)
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            item.classList.toggle('active');
+        });
+    });
+
+    // 3. Pre-Register Form
+    const preRegForm = document.getElementById('preRegisterForm');
+    const preRegMsg = document.getElementById('preregisterMsg');
+    
+    if (preRegForm) {
+        preRegForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('preregisterEmail');
+            const email = emailInput.value;
+            const btn = preRegForm.querySelector('button');
+            
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memproses...';
+            btn.disabled = true;
+            
+            try {
+                const res = await fetch('/api/preregister', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    preRegMsg.innerHTML = '<span style="color: var(--neon-green);"><i class="fa-solid fa-check"></i> Email berhasil terdaftar! Kamu akan dihubungi saat Gelombang 2 dibuka.</span>';
+                    emailInput.value = '';
+                } else {
+                    preRegMsg.innerHTML = `<span style="color: #ff5f56;"><i class="fa-solid fa-triangle-exclamation"></i> ${data.error || 'Terjadi kesalahan.'}</span>`;
+                }
+            } catch (err) {
+                preRegMsg.innerHTML = '<span style="color: #ff5f56;"><i class="fa-solid fa-triangle-exclamation"></i> Gagal terhubung ke server.</span>';
+            } finally {
+                btn.innerHTML = '<i class="fa-solid fa-envelope"></i> Daftar';
+                btn.disabled = false;
+            }
+        });
+    }
+});
