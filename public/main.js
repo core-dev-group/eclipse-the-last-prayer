@@ -157,7 +157,7 @@ const patchNotesContainer = document.getElementById('patchNotesContainer');
 if (patchNotesContainer) {
     fetch('/api/patchnotes')
         .then(res => res.json())
-        .then(json => {
+        .then(async json => {
             const loading = document.getElementById('loadingPatchNotes');
             if (loading) loading.remove();
             
@@ -165,10 +165,16 @@ if (patchNotesContainer) {
             const cursor = patchNotesContainer.querySelector('.log-cursor');
             if (cursor) cursor.remove();
 
+            const terminalBody = document.querySelector('.terminal-body');
+
             if (json.success && json.data && json.data.length > 0) {
-                json.data.forEach(note => {
+                // Balikkan urutan agar yang terbaru diprint terakhir di bawah
+                const logs = [...json.data].reverse();
+                
+                for (const note of logs) {
                     const entry = document.createElement('div');
                     entry.className = 'log-entry';
+                    entry.style.display = 'none'; // Sembunyikan awal
                     
                     let changesHTML = '';
                     if (note.changes && Array.isArray(note.changes)) {
@@ -178,11 +184,25 @@ if (patchNotesContainer) {
                     }
 
                     entry.innerHTML = `
-                        <span class="log-date">${note.date}</span> <span class="log-version">${note.version}</span>
+                        <span class="log-date">[${note.date}]</span> <span class="log-version">${note.version}</span>
                         ${changesHTML}
                     `;
                     patchNotesContainer.appendChild(entry);
-                });
+                    
+                    // Efek terminal lambat
+                    await new Promise(r => setTimeout(r, 100)); 
+                    entry.style.display = 'block';
+                    
+                    // Animasi auto-scroll ke bawah saat teks muncul
+                    if (terminalBody) {
+                        terminalBody.scrollTo({
+                            top: terminalBody.scrollHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    await new Promise(r => setTimeout(r, 450)); // jeda sebelum patch note berikutnya
+                }
             } else {
                 const empty = document.createElement('div');
                 empty.className = 'log-entry';
@@ -190,17 +210,25 @@ if (patchNotesContainer) {
                 patchNotesContainer.appendChild(empty);
             }
 
-            // Kembalikan cursor di paling bawah
+            // Kembalikan cursor di paling bawah (efek blok berkedip hacker)
             const newCursor = document.createElement('div');
             newCursor.className = 'log-cursor';
-            newCursor.innerText = '_';
+            newCursor.innerText = '█';
             patchNotesContainer.appendChild(newCursor);
+            
+            if (terminalBody) {
+                terminalBody.scrollTo({
+                    top: terminalBody.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
         })
         .catch(err => {
             console.error('Gagal mengambil patch notes:', err);
             const loading = document.getElementById('loadingPatchNotes');
             if (loading) {
-                loading.innerHTML = `<span class="log-text" style="color: #ff4444;">Gagal terhubung ke satelit. Menggunakan data cadangan (Offline).</span>`;
+                loading.innerText = 'Gagal terhubung ke satelit. Menggunakan data cadangan (Offline).';
+                loading.style.color = '#ff5f56';
             }
         });
 }
