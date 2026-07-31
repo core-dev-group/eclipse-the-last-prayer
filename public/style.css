@@ -262,51 +262,57 @@ h1, h2, h3, h4, .logo {
     left: 20px;
     display: flex;
     align-items: center;
-    background: rgba(139, 0, 0, 0.4);
-    border: 1px solid rgba(255, 0, 0, 0.5);
+    background: rgba(15, 10, 10, 0.75);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     padding: 6px;
-    border-radius: 6px;
-    backdrop-filter: blur(4px);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
     cursor: pointer;
     overflow: hidden;
-    max-width: 56px;
-    transition: max-width 0.4s ease, padding 0.4s ease, background 0.4s ease;
+    max-width: 52px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
     z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-.mature-badge.expanded,
-.mature-badge:hover {
-    max-width: 500px;
-    padding: 6px 16px;
-    background: rgba(139, 0, 0, 0.8);
+.mature-badge.expanded {
+    max-width: 400px;
+    padding: 6px 20px 6px 6px;
+    background: rgba(20, 0, 0, 0.85);
+    border-color: rgba(255, 50, 50, 0.5);
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
 }
 
 .age-rating {
-    background: #ff0000;
+    background: linear-gradient(135deg, #ff0000, #8b0000);
     color: #fff;
     font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 1rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
     flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(255,0,0,0.3);
 }
 
 .mature-text {
     opacity: 0;
     margin-left: 0;
-    color: #ffcccc;
-    font-size: 0.85rem;
+    color: #e0e0e0;
+    font-size: 0.8rem;
+    font-weight: 600;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: opacity 0.4s ease, margin-left 0.4s ease;
+    transition: opacity 0.3s ease, margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
 }
 
-.mature-badge.expanded .mature-text,
-.mature-badge:hover .mature-text {
+.mature-badge.expanded .mature-text {
     opacity: 1;
-    margin-left: 12px;
+    margin-left: 15px;
 }
 
 .game-title {
@@ -1380,10 +1386,10 @@ h1, h2, h3, h4, .logo {
     .hero-buttons { flex-direction: column; gap: 1rem; }
     .btn { font-size: 0.8rem; padding: 0.8rem 1.5rem; width: 100%; text-align: center; }
     .mature-badge { top: 80px; left: 10px; max-width: 48px; padding: 4px; }
-    .mature-badge.expanded, .mature-badge:hover { max-width: 320px; padding: 4px 10px; }
+    .mature-badge.expanded { max-width: 320px; padding: 4px 12px 4px 4px; }
     .mature-text { font-size: 0.65rem; white-space: normal; }
-    .mature-badge.expanded .mature-text, .mature-badge:hover .mature-text { margin-left: 8px; }
-    .age-rating { font-size: 0.85rem; padding: 2px 6px; }
+    .mature-badge.expanded .mature-text { margin-left: 10px; }
+    .age-rating { font-size: 0.85rem; padding: 2px 6px; width: 32px; height: 32px; }
     
     /* Sections & Typography */
     .section { padding: 40px 0; }
