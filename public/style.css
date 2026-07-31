@@ -1415,8 +1415,25 @@ h1, h2, h3, h4, .logo {
     .story-text p { font-size: 0.95rem; line-height: 1.6; }
     
     /* Character Cards */
-    .character-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .char-card { height: 380px; min-height: 380px; }
+    .character-grid { 
+        display: flex; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        gap: 1rem; 
+        padding-bottom: 1.5rem; 
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    .character-grid::-webkit-scrollbar { height: 4px; }
+    .character-grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+    .character-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 4px; }
+    
+    .char-card { 
+        flex: 0 0 85%; 
+        scroll-snap-align: center; 
+        height: 380px; 
+        min-height: 380px; 
+    }
     .char-overlay { height: 50%; }
     .char-info { padding: 1rem; }
     .char-info h3 { font-size: 1.3rem; margin-bottom: 0.2rem; }
