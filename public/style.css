@@ -1182,7 +1182,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .faq-item.active .faq-answer {
-    padding: 0 1.5rem 1.5rem;
+    padding: 1rem 1.5rem 1.5rem;
 }
 
 .faq-answer p {
@@ -1439,7 +1439,7 @@ h1, h2, h3, h4, .logo {
     .faq-question { padding: 1rem; gap: 0.8rem; align-items: flex-start; }
     .faq-question h3 { font-size: 0.95rem; line-height: 1.5; }
     .faq-question i { margin-top: 4px; }
-    .faq-item.active .faq-answer { padding: 0 1rem 1rem; }
+    .faq-item.active .faq-answer { padding: 0.8rem 1rem 1rem; }
     
     /* Footer */
     .footer-links-col h3 { font-size: 1rem; margin-bottom: 0.8rem; }
