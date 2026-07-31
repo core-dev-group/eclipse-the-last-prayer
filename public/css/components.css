@@ -854,6 +854,7 @@
     .lightbox-close { top: 1rem; right: 1rem; font-size: 2rem; }
     .lore-section { padding: 3rem 0; }
     .lore-container { padding: 1rem; }
+    .split-layout { flex-direction: column; gap: 2rem; }
     .lore-text { font-size: 0.95rem; text-align: left; line-height: 1.6; }
     .preregister-input-group { flex-direction: column; }
     .preregister-input { width: 100%; margin-bottom: 0; }
