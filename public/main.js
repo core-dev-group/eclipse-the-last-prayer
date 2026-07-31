@@ -327,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const emailInput = document.getElementById('preregisterEmail');
             const email = emailInput.value;
+            const turnstileResponse = new FormData(e.target).get('cf-turnstile-response');
             const btn = preRegForm.querySelector('button');
             
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memproses...';
@@ -338,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email })
+                    body: JSON.stringify({ email, turnstileToken: turnstileResponse })
                 });
                 
                 const data = await res.json();
@@ -348,9 +349,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     emailInput.value = '';
                 } else {
                     preRegMsg.innerHTML = `<span style="color: #ff5f56;"><i class="fa-solid fa-triangle-exclamation"></i> ${data.error || 'Terjadi kesalahan.'}</span>`;
+                    setTimeout(() => window.turnstile?.reset(), 0);
                 }
             } catch (err) {
                 preRegMsg.innerHTML = '<span style="color: #ff5f56;"><i class="fa-solid fa-triangle-exclamation"></i> Gagal terhubung ke server.</span>';
+                setTimeout(() => window.turnstile?.reset(), 0);
             } finally {
                 btn.innerHTML = '<i class="fa-solid fa-envelope"></i> Daftar';
                 btn.disabled = false;

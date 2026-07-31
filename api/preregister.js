@@ -41,18 +41,39 @@ module.exports = async (req, res) => {
     }
 
     try {
-        const { email } = req.body;
+        const { email, turnstileToken } = req.body;
         
         if (!email || !email.includes('@')) {
             return res.status(400).json({ success: false, error: 'Format email tidak valid.' });
+        }
+        
+        if (!turnstileToken) {
+            return res.status(400).json({ success: false, error: 'Verifikasi keamanan (CAPTCHA) gagal. Silakan coba lagi.' });
+        }
+
+        // Ambil IP Address pengirim (Di Vercel, biasanya ada di header x-forwarded-for)
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+
+        // Verifikasi Turnstile ke server Cloudflare
+        const turnstileVerify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                secret: process.env.TURNSTILE_SECRET,
+                response: turnstileToken,
+                remoteip: ip
+            })
+        });
+        
+        const turnstileResult = await turnstileVerify.json();
+        if (!turnstileResult.success) {
+            return res.status(403).json({ success: false, error: 'Aktivitas mencurigakan terdeteksi (Bot). Silakan coba lagi.' });
         }
 
         const client = await clientPromise;
         const db = client.db('namelessking');
         const collection = db.collection('preregister');
 
-        // Ambil IP Address pengirim (Di Vercel, biasanya ada di header x-forwarded-for)
-        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
 
         // Cek Anti-Spam: Berapa kali IP ini mendaftar dalam 24 jam terakhir?
         const oneDayAgo = new Date();
